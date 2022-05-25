@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.load.min.js" ></script>
+   <title>Elezioni Widget</title>
+   <style>
+      @font-face { 
+         font-display: swap;
+         font-family: 'TT Norms Pro Bold';
+         src: local('TT Norms Pro Bold'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms-bold.woff2") format('woff2'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms-bold.ttf") format('truetype');
+      }
+      @font-face { 
+         font-display: swap;
+         font-family: 'TT Norms Pro Regular';
+         src: local('TT Norms Pro Regular'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms.woff2") format('woff2'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms.ttf") format('truetype');
+      }
+      @font-face { 
+         font-display: swap;
+         font-family: 'TT Norms Pro Thin';
+         src: local('TT Norms Pro Thin'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms-thin.woff2") format('woff2'),
+         url("/wp-content/themes/ifq-2019/fonts/tt-norms-thin.ttf") format('truetype');
+      }
+   </style>
+</head>
+<body>
+   <referendum></referendum>
+   <coalitions></coalitions>
+   <regionali></regionali>
+   <bars></bars>
+   <staked></staked>
+   <seats></seats>
+<script>
+     head.load(['./dist/widget_referendum.js'], function(){
+         var referendum = new Widget({
+            target: document.querySelector('referendum'),
+            data: {
+               title: 'Risultati Referendum',
+               subtitle: 'Approvate il testo della legge costituzionale concernente "Modifiche agli articoli 56, 57 e 59 della Costituzione in materia di riduzione del numero dei parlamentari", approvato dal Parlamento e pubblicato nella Gazzetta ufficiale della Repubblica Italiana - n. 240 del 12 ottobre 2019?',
+               dataSource:"Ministero dell'Interno",
+               influx: '44%',
+               urlViewAll : 'https://www.google.it',
+               yesVotes : '2.222',
+               yesPerc : '22%',
+               noVotes : '21.11',
+               noPerc: '44%',
+               sectionTot: '333',
+               sectionCurrent: '22'
+            }
+         });
+         console.log('loaded referendum widget')
+      });
+      // ------------------------
+      
+      head.load(['widget_coalitions.js', 'ep2018_listconfig.js'], function() {
+            var coalitions = new Widget({
+            target: document.querySelector( 'coalitions' ),
+               data: {
+               configList: Ep2018ListConfig,
+               type: '',
+               imagePath:'https://st.ilfattoquotidiano.it/wp-content/uploads/politiche-2018/loghi/',
+               dataSource:'Fonte: Ministero del Delirio',
+               limit:4,
+               figures:[
+                  {
+                     id: 'centro-sinistra',
+                     percent:17.43,
+                     percent2:20.06,
+                     lists:[{'partito-democratico':13}, {'italia-europa-insieme':3}, {'europa':5}]
+                  },
+                  {
+                     id: 'centro-destra',
+                     percent:34,
+                     percent2:37,
+                     lists:[{'forza-italia':23}, {'lega':20}, {'fratelli-ditalia-con-giorgia-meloni':4}, {'noi-con-litalia-udc':2}]
+                  },
+                  {
+                     id: 'movimento-5-stelle',  
+                     percent:29,
+                     percent2:32,
+                     lists:[{'movimento-5-stelle':29}]
+                  },
+                  {
+                     id: 'liberi-e-uguali',
+                     percent:8,
+                     percent2:11,
+                     lists:[{'liberi-e-uguali':8}]
+                  },
+                  {
+                     id: 'movimento-5-stelle',  
+                     percent:29,
+                     percent2:32,
+                     lists:[{'movimento-5-stelle':29}]
+                  },
+                  {
+                     id: 'liberi-e-uguali',
+                     percent:8,
+                     percent2:11,
+                     lists:[{'liberi-e-uguali':8}]
+                  },
+                  {
+                     id: 'movimento-5-stelle',  
+                     percent:29,
+                     percent2:32,
+                     lists:[{'movimento-5-stelle':29}]
+                  },
+                  {
+                     id: 'liberi-e-uguali',
+                     percent:8,
+                     percent2:11,
+                     lists:[{'liberi-e-uguali':8}]
+                  }
+               ],
+               figures2:[
+               {
+                     id: 'centro-sinistra',
+                     percent:18,
+                     percent2:21,
+                     lists:[{'partito-democratico':13}, {'italia-europa-insieme':3}, {'europa':5}]
+                  },
+                  {
+                     id: 'centro-destra',
+                     percent:27,
+                     percent2:30,
+                     lists:[{'forza-italia':23}, {'lega':20}, {'fratelli-ditalia-con-giorgia-meloni':4}, {'noi-con-litalia-udc':2}]
+                  },
+                  {
+                     id: 'movimento-5-stelle',  
+                     percent:30,
+                     percent2:33,
+                     lists:[{'movimento-5-stelle':29}]
+                  },
+                  {
+                     id: 'liberi-e-uguali',
+                     percent:18,
+                     percent2:21,
+                     lists:[{'liberi-e-uguali':8}]
+                  },
+                  
+               ]
+            }
+            });
+      });
+      // ------------------------
+      head.load(['widget_regionali_new.js', 'ep2018_listconfig.js'], function() {
+            var coalitions = new Widget({
+               target: document.querySelector( 'regionali' ),
+               data: {
+                  configList: Ep2018ListConfig,
+                  imagePath:'https://st.ilfattoquotidiano.it/wp-content/uploads/politiche-2018/regionali/',
+                  dataSource:'Fonte: Ministero del Delirio',
+                  limit:3,
+                  regionalData:[
+                     {
+                        title: 'regione 1',
+                        url: 'http://www.pippo.com',
+                        figures: [
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO",
+                              "percent": 12,
+                              "percent2": 15,
+                              "id": "centro-destra"
+                           },
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO",
+                              "percent": 12,
+                              "id": "movimento-5-stelle"
+                           },
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO",
+                              "percent": 12,
+                              "percent2": 15,
+                              "id": "centro-sinistra"
+                           }
+                        ]
+                     },
+                     {
+                        title: 'regione 2',
+                        url: 'http://www.pippa.com',
+                        figures: [
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO2",
+                              "percent": 12,
+                              "percent2": 15,
+                              "id": "centro-destra"
+                           },
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO1",
+                              "percent": 12,
+                              "id": "movimento-5-stelle"
+                           },
+                           {
+                              "cognome": "FONTANA",
+                              "nome": "ATTILIO3",
+                              "percent": 12,
+                              "percent2": 15,
+                              "id": "centro-sinistra"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            });
+      });
+      // ------------------------
+      head.load(['widget_bars.js', 'ep2018_listconfig.js'], function() {
+            var EP2018Bars=[
+               {id:'partito-democratico', perc:47.2, perc2:50.2},
+               {id:'movimento-5-stelle', perc:23.4, perc2:50.2},
+               {id:'forza-italia', perc:11.3, perc2:50.2},
+               {id:'lega', perc:14.2, perc2:50.2},
+               {id:'fratelli-ditalia-con-giorgia-meloni', perc:5.7, perc2:50.2},
+               {id:'liberi-e-uguali', perc:10.8, perc2:50.2},
+               {id:'casapound-italia', perc:1.2, perc2:50.2},
+               {id:'noi-con-litalia-udc', perc:3.2, perc2:0},
+               {id:'europa', perc:3.0, },
+               {id:'italia-europa-insieme', perc:3.0, perc2:50.2},
+               {id:'altri', perc:2.9, perc2:50.2}
+            ]
+            var EP2018Bars2=[
+               {id:'partito-democratico', perc:47.2, perc2:50.2},
+               {id:'movimento-5-stelle', perc:23.4, perc2:50.2},
+               {id:'forza-italia', perc:11.3, perc2:50.2},
+               
+               {id:'casapound-italia', perc:1.2, perc2:50.2},
+               {id:'noi-con-litalia-udc', perc:3.2, perc2:0},
+               {id:'europa', perc:3.0, },
+               {id:'italia-europa-insieme', perc:3.0, perc2:50.2},
+               {id:'altri', perc:2.9, perc2:50.2}
+            ]
+            var bars = new Widget({
+            target: document.querySelector( 'bars' ),
+            data: {
+               title:'Exit Poll Camera',
+               title2:'Exit Poll Senato',
+               configList: Ep2018ListConfig,
+               figures: EP2018Bars,
+               figures2: EP2018Bars2,
+               dataSource: '18 sezioni su 540',
+               limit: 6 
+            }
+         });
+      })
+
+      // ------------------------
+      head.load(['widget_stacked.js', 'ep2018_listconfig.js'], function() {
+            var EP2018Seats=[{"id": "centro-destra", "seats": 109}, {"id": "lega", "seats": 73}, {"id": "forza-italia", "seats": 59}, {"id": "fratelli-ditalia-con-giorgia-meloni", "seats": 19}, {"id": "movimento-5-stelle", "seats": 221}, {"id": "centro-sinistra", "seats": 24}, {"id": "partito-democratico", "seats": 86}, {"id": "svp-patt", "seats": 2}, {"id": "liberi-e-uguali", "seats": 14}, {"id": "unassigned", "seggi": 23}]
+            var EP2018Seats2= [{"id": "centro-destra", "seats": 58}, {"id": "lega", "seats": 37}, {"id": "forza-italia", "seats": 33}, {"id": "fratelli-ditalia-con-giorgia-meloni", "seats": 7}, {"id": "movimento-5-stelle", "seats": 112}, {"id": "centro-sinistra", "seats": 13}, {"id": "partito-democratico", "seats": 43}, {"id": "svp-patt", "seats": 1}, {"id": "liberi-e-uguali", "seats": 4}, {"id": "unassigned", "seggi": 12}]
+            var staked = new Widget({
+               target: document.querySelector( 'staked' ),
+               data: {
+                  title:'Elezioni Politiche 2018 - Seggi Assegnati alla Camera',
+                  title2:'Seggi Assegnati al Senato',
+                  type:'seats', // or 'percent'
+                  seats:630, // or 100,
+                  seats2:315, // or 100,
+                  threshold:0,
+                  configList: Ep2018ListConfig,
+                  figures:EP2018Seats,
+                  figures2:EP2018Seats2,
+                  imagePath:'https://st.ilfattoquotidiano.it/wp-content/uploads/politiche-2018/loghi/',
+                  dataSource:'Fonte: Nando Pagnoncelli',
+                  coalitions:['partito-democratico,centro-sinistra,liberi-e-uguali,movimento-5-stelle', 'lega,movimento-5-stelle', 'centro-destra,lega,forza-italia,movimento-5-stelle']
+               }
+            });
+      })
+      // ------------------------
+
+      head.load(['widget_seats.js', 'ep2018_listconfig.js'], function() {
+            var assigned_seats = [{"id": "centro-destra", "seats": 109}, {"id": "lega", "seats": 73}, {"id": "forza-italia", "seats": 59}, {"id": "fratelli-ditalia-con-giorgia-meloni", "seats": 19}, {"id": "movimento-5-stelle", "seats": 221}, {"id": "centro-sinistra", "seats": 24}, {"id": "partito-democratico", "seats": 86}, {"id": "svp-patt", "seats": 2}, {"id": "liberi-e-uguali", "seats": 14}, {"id": "unassigned", "seats": 23}]
+            var assigned_seats2 = [{"id": "centro-destra", "seats": 58}, {"id": "lega", "seats": 37}, {"id": "forza-italia", "seats": 33}, {"id": "fratelli-ditalia-con-giorgia-meloni", "seats": 7}, {"id": "movimento-5-stelle", "seats": 112}, {"id": "centro-sinistra", "seats": 13}, {"id": "partito-democratico", "seats": 43}, {"id": "svp-patt", "seats": 1}, {"id": "liberi-e-uguali", "seats": 4}, {"id": "unassigned", "seats": 12}]
+            var seats = new Widget({
+            target: document.querySelector( 'seats' ),
+            data: {
+               title:'Camera dei Deputati',
+               title2:'Senato della Repubblica',
+               type:'camera',
+               assignedSeats: assigned_seats,
+               assignedSeats2: assigned_seats2,
+               configList: Ep2018ListConfig,
+               imagePath:'https://st.ilfattoquotidiano.it/wp-content/uploads/politiche-2018/loghi/',
+               dataSource:'Fonte: Vladimir Putin'
+            }
+         });
+      })
+   </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "widgets-elezioni",
+  "version": "1.0.0",
+  "description": "Widgets",
+  "private": true,
+  "dependencies": {
+    "babel-preset-env": "^1.2.0",
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "node": "^11.2.0",
+    "svelte": "^3.24.1"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.9"
+  },
+  "devDependencies": {
+    "gulp-svelte": "^0.4.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": ""
+}
